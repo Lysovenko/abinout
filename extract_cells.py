@@ -19,7 +19,7 @@
 
 from read import Abinout_reader
 from sys import argv, stderr
-from qfa import Cell
+from qfa import Cell, RDD
 in_name = argv[1]
 pref = argv[2]
 
@@ -49,4 +49,9 @@ for x in reader:
     for i, c in enumerate(reader["xred"]):
         c = tuple(map(xred2c, c))
         cel[i] = c
-    cel.save(pref % x)
+    if '-rdf' in argv:
+        rdd=RDD(cel,.05,.05,0.,0)
+        rdd.calculate_rdf()
+        rdd.save(pref % x)
+    else:
+        cel.save(pref % x)
