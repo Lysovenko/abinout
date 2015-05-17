@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 "Diffusion"
-# wxRays (C) 2015 Serhii Lysovenko
+# abinout (C) 2015 Serhii Lysovenko
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ from read import Abinout_reader, Qfa_cells
 in_name = argv[1]
 skip = int(argv[2])
 reader = Abinout_reader(in_name)
-dt = reader.get_variables(('dtion')).get('dtion', (100.,))[0] * 2.418884e-5
+dt = reader.get_variables(("dtion")).get("dtion", (100.,))[0] * 2.418884e-5
 # picoseconds
 reader.reset()
 cells = Qfa_cells(reader)
@@ -32,4 +32,4 @@ for i in xrange(skip):
 types = len(refc.atoms_of_types())
 for i, cell in enumerate(cells):
     sh = [cell.mid_r2_shift(refc, t) for t in range(types)]
-    print("%g\t%s" % (i*dt, '\t'.join(map(str, sh))))
+    print("%g\t%s" % (i*dt, "\t".join(map(str, sh))))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 "Join dat files"
-# wxRays (C) 2015 Serhii Lysovenko
+# abinout (C) 2015 Serhii Lysovenko
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,14 +21,14 @@ from sys import argv
 
 
 def write_omegas(name, head, out):
-    with open(name, 'w') as fout:
+    with open(name, "w") as fout:
         if type(head[0]) == str:
             fout.write(head[0])
             for i in range(1, len(head)):
                 fout.write("\t(%d)" % head[i])
             fout.write("\n")
         for i in out:
-            fout.write('\t'.join(map(str, i)) + '\n')
+            fout.write("\t".join(map(str, i)) + "\n")
 
 
 ipat = argv[1]
@@ -45,7 +45,7 @@ for fname in range(*rangt):
     fcount += 1
     with open(ipat % fname) as fp:
         l = fp.readline()
-        if l.startswith('#'):
+        if l.startswith("#"):
             spl = l.split()
             lhead = [spl[0]]
             for i in spl[1:]:

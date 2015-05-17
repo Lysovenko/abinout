@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 "Extract cells"
-# wxRays (C) 2015 Serhii Lysovenko
+# abinout (C) 2015 Serhii Lysovenko
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -32,8 +32,8 @@ def xred2c(x):
     return (x - .5) * 2.
 
 reader = Abinout_reader(in_name)
-var = reader.get_variables(['acell', 'amu', 'typat', 'natom'])
-typat = var['typat']
+var = reader.get_variables(["acell", "amu", "typat", "natom"])
+typat = var["typat"]
 typd = {}
 for i in map(int, typat):
     typd[i] = 1 + typd.get(i, 0)
@@ -45,8 +45,8 @@ reader[0]
 for x in reader:
     cel = Cell()
     cel.random(typat)
-    cel.set_size(var['acell'][0] * 0.2645886096)
-    for i, c in enumerate(reader['xred']):
+    cel.set_size(var["acell"][0] * 0.2645886096)
+    for i, c in enumerate(reader["xred"]):
         c = tuple(map(xred2c, c))
         cel[i] = c
     cel.save(pref % x)
