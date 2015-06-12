@@ -50,7 +50,7 @@ for x in reader:
         c = tuple(map(xred2c, c))
         cel[i] = c
     if '-rdf' in argv:
-        rdd=RDD(cel,.05,.05,0.,0)
+        rdd = RDD(cel, .05, .05, 0., 0)
         rdd.calculate_rdf()
         rdd.save(pref % x)
     else:
